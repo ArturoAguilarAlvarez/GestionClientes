@@ -1,0 +1,16 @@
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\bin\Debug\GestionClientes.exe.config
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\obj\Debug\GestionClientes.csprojResolveAssemblyReference.cache
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\obj\Debug\GestionClientes.Form1.resources
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\obj\Debug\GestionClientes.Properties.Resources.resources
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\obj\Debug\GestionClientes.csproj.GenerateResource.Cache
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\obj\Debug\GestionClientes.categoria.resources
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\obj\Debug\GestionClientes.usuario.resources
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\bin\Debug\GestionClientes.exe
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\bin\Debug\GestionClientes.pdb
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\obj\Debug\GestionClientes.exe
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\obj\Debug\GestionClientes.pdb
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\bin\Debug\GestionClientes.exe.manifest
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\bin\Debug\GestionClientes.application
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\obj\Debug\GestionClientes.TrustInfo.xml
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\obj\Debug\GestionClientes.exe.manifest
+c:\users\artur\documents\visual studio 2015\Projects\GestionClientes\GestionClientes\obj\Debug\GestionClientes.application
