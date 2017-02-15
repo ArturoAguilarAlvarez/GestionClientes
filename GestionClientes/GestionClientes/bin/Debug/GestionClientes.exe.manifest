@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GestionClientes.exe" size="26592">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GestionClientes.exe" size="27616">
       <assemblyIdentity name="GestionClientes" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5pvuSo3mZBeFassLI0u6t95MuCHbc/ny4LBlurY7jlU=</dsig:DigestValue>
+        <dsig:DigestValue>Gn+fvvQtoyQ/1vmHJvrdMItkRKWl3JTSdaDpN2uMZu8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

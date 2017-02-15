@@ -12,7 +12,8 @@ namespace GestionClientes
 {
     public partial class usuario : Form
     {
-            int tipo;
+        //la variable idCliente es una ayuda que se tiene para mostrar si es agregar un nuevo usuario o una edicion de usuario
+        int tipo;
             int idCliente;
             public usuario(int tipo, int idCliente)
             {
@@ -27,6 +28,10 @@ namespace GestionClientes
             {
                 int id = buscarIdCategoria(Convert.ToString(cboxOpciones.SelectedItem));
             conexionBD objNP = new conexionBD();
+
+
+
+            //si idCliente es 0 es un nuevo usuario de lo cantrario es una edicion de usuario 
                 if (idCliente == 0)
                 {
                     if (txtNombre.Text != "" && txtAP.Text != "" && txtCorreo.Text != "" && txtTelefono.Text != "")
@@ -56,7 +61,8 @@ namespace GestionClientes
                 }
                 else
                 {
-                    objNP.actualizarCliente(txtNombre.Text, txtAP.Text, txtTelefono.Text, txtCorreo.Text, idCliente);
+                id = buscarIdCategoria(Convert.ToString(cboxOpciones.SelectedItem));
+                objNP.actualizarCliente(txtNombre.Text, txtAP.Text, txtTelefono.Text, txtCorreo.Text, idCliente,id);
                     this.Hide();
                 }
 

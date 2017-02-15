@@ -12,6 +12,9 @@ namespace GestionClientes
 {
     public partial class categoria : Form
     {
+        //el valor es la variable que se necesita para saber si lo que se esta realizando es agregar 
+        //nueva categoria, editar categoria o eliminar categoria
+
         int valor = 0;
         public categoria(int a)
         {
@@ -26,6 +29,8 @@ namespace GestionClientes
             {
                 cboxCategoria.Visible = true;
                 conexionBD objNP = new conexionBD();
+
+                //el metodo llenatItems es neceario para obtener los nombres de todas las categorias.
                 objNP.LlenarItems(this.cboxCategoria);
                 valor = 2;
             }
@@ -102,6 +107,8 @@ namespace GestionClientes
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+
+            //este es el boton exit para cancelar la ejecucion de a ventan    
             Form1 objMain = new Form1();
             objMain.Show();
             this.Close();

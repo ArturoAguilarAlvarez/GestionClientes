@@ -11,8 +11,10 @@ namespace GestionClientes
 {
     class conexionBD
     { 
-
+        //linea de conexion
     SqlConnection conx = new SqlConnection("Data Source=DESKTOP-IQQHUJ4\\MSSQLSERVERAAA;Initial Catalog=GestionCientes;Integrated Security=True");
+
+        //variable para las lineas de comando para consultas sql
     SqlCommand cmd;
     DataTable dt = new DataTable();
     SqlDataReader dr;
@@ -20,7 +22,9 @@ namespace GestionClientes
 
     public void LlenarItems(ComboBox cBox)
     {
-        conx.Open();
+
+            //metodo para abrir la conexion entre la base de datos
+            conx.Open();
 
         cmd = new SqlCommand("select*from categorias", conx);
         dr = cmd.ExecuteReader();
@@ -29,6 +33,8 @@ namespace GestionClientes
             cBox.Items.Add(dr["nombre"].ToString());
         }
         cBox.SelectedIndex = 0;
+
+            //metodo para cerrar la conexion entre la base de datos
         conx.Close();
     }
 
@@ -45,11 +51,11 @@ namespace GestionClientes
         conx.Close();
 
     }
-    public void actualizarCliente(string nombre, string apellidoP, string telefono, string correo, int id)
+    public void actualizarCliente(string nombre, string apellidoP, string telefono, string correo, int id,int idCategoria)
     {
 
         SqlCommand cm = this.conx.CreateCommand();
-        cm.CommandText = ("UPDATE clientes SET nombre='" + nombre + "', apellidos='" + apellidoP + "', telefono='" + telefono + "', correo='" + correo + "' WHERE idCliente=" + id + "");
+        cm.CommandText = ("UPDATE clientes SET nombre='" + nombre + "', apellidos='" + apellidoP + "', telefono='" + telefono + "', correo='" + correo + "', idCategoria="+ idCategoria + " WHERE idCliente=" + id + "");
         conx.Open();
         cm.ExecuteNonQuery();
         MessageBox.Show("si");
@@ -89,19 +95,23 @@ namespace GestionClientes
     }
     public void Listar(DataGridView data)
     {
-            
-        conx.Open();
-        SqlDataAdapter adap = new SqlDataAdapter(" select c.idCliente, c.nombre, c.apellidos, telefono, correo, (select nombre from categorias where categorias.idCategoria = c.idCategoria) as categoria from clientes c", conx);
-        adap.Fill(dt);
-        data.DataSource = dt;
-        conx.Close();
-
+            try
+            {
+                conx.Open();
+                SqlDataAdapter adap = new SqlDataAdapter(" select c.idCliente, c.nombre, c.apellidos, telefono, correo, (select nombre from categorias where categorias.idCategoria = c.idCategoria) as categoria from clientes c", conx);
+                adap.Fill(dt);
+                data.DataSource = dt;
+                conx.Close();
+            }
+            catch (Exception)
+            {
+            }
     }
 
     public void buscarNombre(DataGridView data, string nombre)
     {
         conx.Open();
-        SqlDataAdapter adap = new SqlDataAdapter("   select c.nombre,apellidos,telefono,correo,(select nombre from categorias where categorias.idCategoria=c.idCategoria)as categoria from clientes c where c.nombre like '" + nombre + "%'", conx);
+        SqlDataAdapter adap = new SqlDataAdapter("   select c.idCliente, c.nombre,apellidos,telefono,correo,(select nombre from categorias where categorias.idCategoria=c.idCategoria)as categoria from clientes c where c.nombre like '" + nombre + "%'", conx);
         adap.Fill(dt);
         data.DataSource = dt;
         conx.Close();
@@ -118,7 +128,7 @@ namespace GestionClientes
     public void buscarApellidoPaterno(DataGridView data, string apellidoP)
     {
         conx.Open();
-        SqlDataAdapter adap = new SqlDataAdapter("   select c.nombre,apellidos,telefono,correo,(select nombre from categorias where categorias.idCategoria=c.idCategoria)as categoria from clientes c where c.apellidos like '" + apellidoP + "%'", conx);
+        SqlDataAdapter adap = new SqlDataAdapter("   select c.idCliente, c.nombre,apellidos,telefono,correo,(select nombre from categorias where categorias.idCategoria=c.idCategoria)as categoria from clientes c where c.apellidos like '%" + apellidoP + "%'", conx);
         adap.Fill(dt);
         data.DataSource = dt;
         conx.Close();
@@ -126,7 +136,7 @@ namespace GestionClientes
     public void buscarTelefono(DataGridView data, string telefono)
     {
         conx.Open();
-        SqlDataAdapter adap = new SqlDataAdapter("   select c.nombre,apellidos,telefono,correo,(select nombre from categorias where categorias.idCategoria=c.idCategoria)as categoria from clientes c where c.telefono like '" + telefono + "%'", conx);
+        SqlDataAdapter adap = new SqlDataAdapter("   select  c.idCliente, c.nombre,apellidos,telefono,correo,(select nombre from categorias where categorias.idCategoria=c.idCategoria)as categoria from clientes c where c.telefono like '" + telefono + "%'", conx);
         adap.Fill(dt);
         data.DataSource = dt;
         conx.Close();
@@ -171,15 +181,27 @@ namespace GestionClientes
             MessageBox.Show("elemento usado");
         }
     }
+
+
+        //metodo que recibe los areas de texto de la forma usuario.cs design
     public void buscarCliente(int idCliente, TextBox txtNombre, TextBox txtAP, TextBox txtCorreo, TextBox txtTelefono)
     {
         conx.Open();
+
+            //consulta sql
         SqlDataAdapter adap = new SqlDataAdapter("select c.nombre,apellidos,telefono,correo,(select nombre from categorias where categorias.idCategoria=c.idCategoria)as categoria from clientes c where c.idCliente = '" + idCliente + "'", conx);
+
+            //ejecuta la linea de comando.
         adap.Fill(dt);
+
+
+            //conjunto de metodos para obtener del dt las variables
         txtNombre.Text = dt.Rows[0]["nombre"].ToString();
         txtAP.Text = dt.Rows[0]["apellidos"].ToString();
         txtCorreo.Text = dt.Rows[0]["correo"].ToString();
         txtTelefono.Text = dt.Rows[0]["telefono"].ToString();
+
+
         conx.Close();
     }
 

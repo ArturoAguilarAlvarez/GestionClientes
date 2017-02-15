@@ -37,11 +37,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataClientes)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +82,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(267, 20);
             this.txtBuscar.TabIndex = 12;
+            this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress_1);
             // 
             // cboxOpciones
             // 
@@ -116,8 +120,7 @@
             // usuarioToolStripMenuItem
             // 
             this.usuarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nuevoToolStripMenuItem,
-            this.editarToolStripMenuItem});
+            this.nuevoToolStripMenuItem});
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
             this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.usuarioToolStripMenuItem.Text = "Cliente";
@@ -128,12 +131,6 @@
             this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click_1);
-            // 
-            // editarToolStripMenuItem
-            // 
-            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.editarToolStripMenuItem.Text = "Editar";
             // 
             // categoriaToolStripMenuItem
             // 
@@ -148,29 +145,70 @@
             // nuevaToolStripMenuItem
             // 
             this.nuevaToolStripMenuItem.Name = "nuevaToolStripMenuItem";
-            this.nuevaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nuevaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.nuevaToolStripMenuItem.Text = "Nueva";
             this.nuevaToolStripMenuItem.Click += new System.EventHandler(this.nuevaToolStripMenuItem_Click_1);
             // 
             // editarToolStripMenuItem1
             // 
             this.editarToolStripMenuItem1.Name = "editarToolStripMenuItem1";
-            this.editarToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.editarToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.editarToolStripMenuItem1.Text = "Editar";
             this.editarToolStripMenuItem1.Click += new System.EventHandler(this.editarToolStripMenuItem1_Click_1);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(736, 232);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "IdCliente";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(318, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Campo buscado";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 61);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Buscar por";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(706, 32);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Listar clientes";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 460);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btEditar);
             this.Controls.Add(this.txtIdCliente);
             this.Controls.Add(this.btEliminar);
@@ -199,11 +237,14 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -14,6 +14,9 @@ namespace GestionClientes
     {
 
         conexionBD objconexion = new conexionBD();
+
+
+        //al iniciar lista todo los clientes
         public Form1()
         {
             InitializeComponent();
@@ -21,6 +24,7 @@ namespace GestionClientes
             objconexion.Listar(this.dataClientes);
         }
 
+        //este boton abre la ventana para eliminar clientes
         private void button1_Click(object sender, EventArgs e)
         {
             conexionBD objconexion = new conexionBD();
@@ -50,38 +54,18 @@ namespace GestionClientes
 
         private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
-            {
-                dataClientes.SelectAll();
-                dataClientes.ClearSelection();
 
-                if (cboxOpciones.SelectedItem.Equals("Nombre"))
-                {
-                    objconexion.buscarNombre(this.dataClientes, txtBuscar.Text);
-                }
-                if (cboxOpciones.SelectedItem.Equals("ApellidoPaterno"))
-                {
-                    objconexion.buscarApellidoPaterno(this.dataClientes, txtBuscar.Text);
-                }
-                if (cboxOpciones.SelectedItem.Equals("Telefono"))
-                {
-                    objconexion.buscarTelefono(this.dataClientes, txtBuscar.Text);
-                }
-                if (cboxOpciones.SelectedItem.Equals("Correo"))
-                {
-                    objconexion.buscarCorreo(this.dataClientes, txtBuscar.Text);
-                }
-            }
-            catch (Exception)
-            {
-            }
         }
 
+
+
+        //boton para editar usuario
         private void btEditar_Click(object sender, EventArgs e)
         {
             try
             {
-                usuario objUsuario = new usuario(1, int.Parse(txtIdCliente.Text));              
+                usuario objUsuario = new usuario(1, int.Parse(txtIdCliente.Text));
+                conexionBD objconexion = new conexionBD();
                 objconexion.buscarCliente(int.Parse(txtIdCliente.Text), objUsuario.txtNombre, objUsuario.txtAP, objUsuario.txtCorreo, objUsuario.txtTelefono);
                 objUsuario.Show();
                 this.Hide();
@@ -92,6 +76,9 @@ namespace GestionClientes
 
         }
 
+
+
+        //es el area de txto donde se realliza una busqueda
         private void txtIdCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Para obligar a que sólo se introduzcan números 
@@ -145,6 +132,7 @@ namespace GestionClientes
         private void eliminarToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             categoria objCategoria = new categoria(3);
+            this.Hide();
             objCategoria.Show();
         }
 
@@ -160,6 +148,41 @@ namespace GestionClientes
             {
             }
 
+        }
+
+        private void txtBuscar_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                dataClientes.Columns.Clear();
+                conexionBD objconexion = new conexionBD();
+
+                if (cboxOpciones.SelectedItem.Equals("Nombre"))
+                {  
+                    objconexion.buscarNombre(this.dataClientes, txtBuscar.Text);
+                }
+                if (cboxOpciones.SelectedItem.Equals("ApellidoPaterno"))
+                {
+                    objconexion.buscarApellidoPaterno(this.dataClientes, txtBuscar.Text);
+                }
+                if (cboxOpciones.SelectedItem.Equals("Telefono"))
+                {
+                    objconexion.buscarTelefono(this.dataClientes, txtBuscar.Text);
+                }
+                if (cboxOpciones.SelectedItem.Equals("Correo"))
+                {
+                    objconexion.buscarCorreo(this.dataClientes, txtBuscar.Text);
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            conexionBD objconexion = new conexionBD();
+            objconexion.Listar(this.dataClientes);
         }
     }
 }
